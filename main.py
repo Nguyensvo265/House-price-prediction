@@ -13,7 +13,7 @@ import pandas
 
 #Import necessary functions
 from accuracy import cal_rsquare
-from linear_regression import simple_linear_regression
+from regression import simple_linear_regression,polynomial_regression
 
 #Import the dataset 
 dataset = pandas.read_csv("Data.csv")
@@ -35,16 +35,20 @@ X_train = scaler_X.fit_transform(X_train)
 X_test = scaler_X.transform(X_test)
 y_train = scaler_Y.fit_transform(y_train.reshape(-1,1))"""
 
-from sklearn.linear_model import LinearRegression 
-regressor = LinearRegression()
-regressor = regressor.fit(X_train,y_train)
-y_pred = regressor.predict(X_test)
-print(cal_rsquare(y_pred,y_test))
-
 #1.Simple linear regression (without backward elimination)
 simple_linear_regression_y_pred = simple_linear_regression(X_train,X_test,
                                                            y_train)
-print(f'Simple linear regression R^2: {cal_rsquare(simple_linear_regression_y_pred,y_test)}')
+print(f'Simple linear regression R^2: {cal_rsquare(y_test,simple_linear_regression_y_pred)}')
+
+#2a.Polynomial regression (degree = 2)
+degree = 2
+poly_y_pred = polynomial_regression(X_train,X_test,y_train,degree)
+print(f'Polynomial regression (degree = {degree}) R^2: {cal_rsquare(y_test,poly_y_pred)})')
+
+#2b.Polynomial regression (degree = 3)
+degree = 3
+poly_y_pred = polynomial_regression(X_train,X_test,y_train,degree)
+print(f'Polynomial regression (degree = {degree}) R^2: {cal_rsquare(y_test,poly_y_pred)})')
 
 
 
