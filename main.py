@@ -13,7 +13,8 @@ import pandas
 
 #Import necessary functions
 from accuracy import cal_rsquare
-from regression import simple_linear_regression,polynomial_regression
+from regression import (simple_linear_regression,polynomial_regression,
+random_forest_regression)
 
 #Import the dataset 
 dataset = pandas.read_csv("Data.csv")
@@ -49,6 +50,25 @@ print(f'Polynomial regression (degree = {degree}) R^2: {cal_rsquare(y_test,poly_
 degree = 3
 poly_y_pred = polynomial_regression(X_train,X_test,y_train,degree)
 print(f'Polynomial regression (degree = {degree}) R^2: {cal_rsquare(y_test,poly_y_pred)})')
+
+#3a.Random Forest Regression (num of trees = 100)
+num_of_trees = 100
+random_forest_y_pred = random_forest_regression(X_train,X_test,y_train,
+                                                num_of_trees)
+print(f'Random forest regression (trees = {num_of_trees}) R^2: {cal_rsquare(y_test,random_forest_y_pred)})')
+
+#3b.Random Forest Regression (num of trees = 100)
+num_of_trees = 200
+random_forest_y_pred = random_forest_regression(X_train,X_test,y_train,
+                                                num_of_trees)
+print(f'Random forest regression (trees = {num_of_trees}) R^2: {cal_rsquare(y_test,random_forest_y_pred)})')
+
+#3c.Random Forest Regression (num of trees = 100)
+num_of_trees = 300
+random_forest_y_pred = random_forest_regression(X_train,X_test,y_train,
+                                                num_of_trees)
+print(f'Random forest regression (trees = {num_of_trees}) R^2: {cal_rsquare(y_test,random_forest_y_pred)})')
+
 
 
 
