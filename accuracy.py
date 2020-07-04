@@ -1,9 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Jun 30 21:01:07 2020
 
-@author: HP
-"""
 import numpy as np
 
 def cal_rsquare(y_true,y_pred):
